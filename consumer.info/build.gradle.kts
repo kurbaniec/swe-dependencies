@@ -23,8 +23,10 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    testImplementation(kotlin("test"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("au.com.dius.pact.consumer:junit5:4.3.16")
+    testImplementation("com.github.tomakehurst:wiremock-jre8:2.35.0")
 }
 
 tasks.withType<KotlinCompile> {
