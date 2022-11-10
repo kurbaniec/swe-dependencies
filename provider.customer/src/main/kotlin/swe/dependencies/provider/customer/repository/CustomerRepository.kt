@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct
 class CustomerRepository {
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(CustomerRepository::class.java)
+        private val logger: Logger = LoggerFactory.getLogger(CustomerRepository::class.java)
     }
 
     private val customers = mutableMapOf<String, Customer>()

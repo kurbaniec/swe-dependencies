@@ -34,3 +34,7 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.bootRun {
+    jvmArgs = listOf("-Dspring.output.ansi.enabled=ALWAYS")
+}
