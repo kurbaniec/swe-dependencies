@@ -1,4 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.ByteArrayOutputStream
+import kotlin.collections.listOf
 
 plugins {
     id("org.springframework.boot") version "2.7.5"
@@ -38,4 +40,39 @@ tasks.withType<Test> {
 
 tasks.bootRun {
     jvmArgs = listOf("-Dspring.output.ansi.enabled=ALWAYS")
+}
+
+tasks.register<Copy>("copyPacts") {
+    description = "Copies the generated Pact json to the provider resources directory"
+    from("build/pacts/")
+    into("../provider.customer/src/test/resources/pacts")
+}
+
+pact {
+    publish {
+        pactDirectory = "consumer.info/build/pacts"
+        pactBrokerUrl = "http://localhost:8000"
+        pactBrokerUsername = "pact_customer"
+        pactBrokerPassword = "pact_customer"
+        tags = listOf(gitBranch(), "test", "prod")
+        consumerVersion = gitHash()
+    }
+}
+
+fun gitHash(): String {
+    val stdOut = ByteArrayOutputStream()
+    project.exec {
+        commandLine("git", "rev-parse", "--short", "HEAD")
+        standardOutput = stdOut
+    }
+    return stdOut.toString().trim()
+}
+
+fun gitBranch(): String {
+    val stdOut = ByteArrayOutputStream()
+    project.exec {
+        commandLine("git", "rev-parse", "--abbrev-ref", "HEAD")
+        standardOutput = stdOut
+    }
+    return stdOut.toString().trim()
 }

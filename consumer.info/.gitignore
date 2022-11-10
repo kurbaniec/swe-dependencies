@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### PACT ###
+src/test/resources/pacts

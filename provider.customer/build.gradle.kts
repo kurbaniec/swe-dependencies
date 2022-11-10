@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.ByteArrayOutputStream
 
 plugins {
     id("org.springframework.boot") version "2.7.5"
@@ -33,8 +34,31 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    if (System.getProperty("pactPublishResults") == "true") {
+        systemProperty("pact.provider.version", gitHash())
+        systemProperty("pact.provider.tag", gitBranch())
+        systemProperty("pact.verifier.publishResults", "true")
+    }
 }
 
 tasks.bootRun {
     jvmArgs = listOf("-Dspring.output.ansi.enabled=ALWAYS")
+}
+
+fun gitHash(): String {
+    val stdOut = ByteArrayOutputStream()
+    project.exec {
+        commandLine("git", "rev-parse", "--short", "HEAD")
+        standardOutput = stdOut
+    }
+    return stdOut.toString().trim()
+}
+
+fun gitBranch(): String {
+    val stdOut = ByteArrayOutputStream()
+    project.exec {
+        commandLine("git", "rev-parse", "--abbrev-ref", "HEAD")
+        standardOutput = stdOut
+    }
+    return stdOut.toString().trim()
 }

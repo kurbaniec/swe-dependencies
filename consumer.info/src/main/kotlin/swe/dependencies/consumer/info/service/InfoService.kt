@@ -21,6 +21,7 @@ class InfoService(
         private val logger: Logger = LoggerFactory.getLogger(InfoService::class.java)
     }
 
+    @Throws(Exception::class)
     fun getAllCustomerInfo(): List<CustomerInfo> {
         logger.info("Querying customer info")
         val customers = api.getAll()
