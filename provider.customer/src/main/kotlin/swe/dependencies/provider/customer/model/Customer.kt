@@ -14,7 +14,8 @@ data class Customer(
     val lastname: String,
     val birthday: LocalDate,
     val address: Address,
-    val products: List<FinancialProduct>
+    val products: List<FinancialProduct>,
+    val status: CustomerStatus
 ) {
     val name: String get() = "$firstname $lastname"
 }

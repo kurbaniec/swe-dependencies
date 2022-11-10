@@ -2,6 +2,7 @@ package swe.dependencies.provider.customer.repository
 
 import swe.dependencies.provider.customer.model.Address
 import swe.dependencies.provider.customer.model.Customer
+import swe.dependencies.provider.customer.model.CustomerStatus
 import swe.dependencies.provider.customer.model.FinancialProduct
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -46,17 +47,17 @@ fun createCustomerMockData(): List<Customer> {
     val customerA = Customer(
         "customer.a@gmail.com", "Max", "Mustermann",
         LocalDate.of(2000, 1, 1), addressA,
-        listOf(productA)
+        listOf(productA), CustomerStatus.CREATED
     )
     val customerB = Customer(
         "customer.b@gmail.com", "Maxine", "Mustermann",
         LocalDate.of(2001, 1, 1), addressB,
-        listOf(productB)
+        listOf(productB), CustomerStatus.VERIFIED
     )
     val customerC = Customer(
         "customer.c@gmail.com", "John", "Doe",
         LocalDate.of(1999, 1, 1), addressC,
-        listOf(productC, productC2)
+        listOf(productC, productC2), CustomerStatus.BANNED
     )
     return listOf(customerA, customerB, customerC)
 }
