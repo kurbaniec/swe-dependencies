@@ -16,18 +16,18 @@ import swe.dependencies.provider.customer.repository.CustomerRepository
 class CustomerService(
     private val repository: CustomerRepository
 ) {
-    
+
     companion object {
         private val logger: Logger = LoggerFactory.getLogger(CustomerService::class.java)
     }
-    
+
     fun getAll(): List<Customer> {
         logger.info("Querying all customers")
-        val customers =  repository.getAll()
+        val customers = repository.getAll()
         logger.info("Found ${customers.count()}")
         return customers
     }
-    
+
     fun getByEmail(email: String): Customer? {
         logger.info("Querying customer with email [$email]")
         val customer = repository.getByEmail(email)
