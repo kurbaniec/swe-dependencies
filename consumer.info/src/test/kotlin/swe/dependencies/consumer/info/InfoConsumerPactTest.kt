@@ -27,13 +27,13 @@ class InfoConsumerPactTest {
 
     @Pact(consumer = "InfoService", provider = "CustomerService")
     fun getAllCustomers(builder: PactDslWithProvider): RequestResponsePact {
-        return builder.given("customer exist")
+        return builder.given("customers exist")
             .uponReceiving("get all customers")
             .method("GET")
             .path("/customers")
             .willRespondWith()
             .status(200)
-            .headers(mapOf("Content-Type" to "application/json; charset=utf-8"))
+            .headers(mapOf("Content-Type" to "application/json"))
             .body(newJsonArrayMinLike(1) { array ->
                 array.`object` { o ->
                     o.stringType("name", "Max Mustermann")
@@ -52,7 +52,7 @@ class InfoConsumerPactTest {
             .path("/customers")
             .willRespondWith()
             .status(200)
-            .headers(mapOf("Content-Type" to "application/json; charset=utf-8"))
+            .headers(mapOf("Content-Type" to "application/json"))
             .body("[]")
             .toPact()
     }

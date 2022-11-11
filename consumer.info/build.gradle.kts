@@ -38,18 +38,22 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
-
-tasks.bootRun {
-    jvmArgs = listOf("-Dspring.output.ansi.enabled=ALWAYS")
-}
-
 tasks.register<Copy>("copyPacts") {
     description = "Copies the generated Pact json to the provider resources directory"
     from("build/pacts/")
     into("../provider.customer/src/test/resources/pacts")
+}
+
+tasks.withType<Test> {
+    // Force files to be overwritten
+    // See: https://docs.pact.io/implementation_guides/jvm/consumer/junit5#forcing-pact-files-to-be-overwritten
+    systemProperty("pact.writer.overwrite", true)
+    useJUnitPlatform()
+    finalizedBy(tasks.getByName("copyPacts"))
+}
+
+tasks.bootRun {
+    jvmArgs = listOf("-Dspring.output.ansi.enabled=ALWAYS")
 }
 
 pact {
