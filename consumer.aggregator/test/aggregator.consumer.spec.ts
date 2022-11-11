@@ -89,8 +89,8 @@ const consumerData = [
                 "interestRate": 3.5
             },
             {
-                "code": "550e8400-e29b-11d4-a716-446655440002",
-                "name": "C",
+                "code": "550e8400-e29b-11d4-a716-446655440003",
+                "name": "C2",
                 "balance": 200,
                 "interestRate": 1.5
             }

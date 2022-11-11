@@ -30,8 +30,8 @@ fun createCustomerMockData(): List<Customer> {
         "C", BigDecimal(500), BigDecimal(3.5)
     )
     val productC2 = FinancialProduct(
-        UUID.fromString("550e8400-e29b-11d4-a716-446655440002"),
-        "C", BigDecimal(200), BigDecimal(1.5)
+        UUID.fromString("550e8400-e29b-11d4-a716-446655440003"),
+        "C2", BigDecimal(200), BigDecimal(1.5)
     )
     // Addresses
     val addressA = Address(

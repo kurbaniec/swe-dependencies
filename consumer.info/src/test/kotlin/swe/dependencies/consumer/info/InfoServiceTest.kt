@@ -130,8 +130,8 @@ class InfoServiceTest {
                 "                \"interestRate\": 3.5\n" +
                 "            },\n" +
                 "            {\n" +
-                "                \"code\": \"550e8400-e29b-11d4-a716-446655440002\",\n" +
-                "                \"name\": \"C\",\n" +
+                "                \"code\": \"550e8400-e29b-11d4-a716-446655440003\",\n" +
+                "                \"name\": \"C2\",\n" +
                 "                \"balance\": 200,\n" +
                 "                \"interestRate\": 1.5\n" +
                 "            }\n" +
