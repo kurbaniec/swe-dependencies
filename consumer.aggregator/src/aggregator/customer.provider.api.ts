@@ -1,3 +1,5 @@
+// noinspection HttpUrlsUsage
+
 import axios from 'axios'
 import {CustomerQuery} from "./custome.query";
 
@@ -5,7 +7,7 @@ export class CustomerProviderApi {
 
     private readonly providerUrl
 
-    constructor(rootUri: String = `${process.env.PROVIDER_CUSTOMER_ADDRESS}:${process.env.PROVIDER_CUSTOMER_PORT}`) {
+    constructor(rootUri: String = `http://${process.env.PROVIDER_CUSTOMER_ADDRESS}:${process.env.PROVIDER_CUSTOMER_PORT}`) {
         this.providerUrl = `${rootUri}/customers`
     }
 

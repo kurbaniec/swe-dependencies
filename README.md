@@ -25,18 +25,21 @@
 1. Run tests & generate pact for `InfoService` consumer
 
    ```bash
+   # On Unix: chmod +x ./consumer.info/gradlew
    ./consumer.info/gradlew -p "consumer.info" test 
    ```
 
 2. Run tests & generate pact for `AggregatorService` consumer
 
    ```bash
+   npm --prefix ./consumer.aggregator/ install
    npm --prefix ./consumer.aggregator/ run test 
    ```
 
 3. Verfiy pacts for `CustomerService` provider
 
    ```bash
+   # On Unix: chmod +x ./provider.customer/gradlew
    ./provider.customer/gradlew -p "provider.customer" test 
    ```
 
