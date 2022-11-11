@@ -2,9 +2,9 @@ import path from "path"
 import {MatchersV3, PactV3, SpecificationVersion,} from "@pact-foundation/pact"
 import {AggregatorService} from "../src/aggregator/aggregator.service";
 import {CustomerProviderApi} from "../src/aggregator/customer.provider.api";
+import {AggregatedCustomer} from "../src/aggregator/customer";
 import {atLeastLike, number, string} from "@pact-foundation/pact/src/v3/matchers";
 import {expect} from "chai";
-import {AggregatedCustomer} from "../src/aggregator/customer";
 
 const {eachLike} = MatchersV3
 
