@@ -133,6 +133,30 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "consumer.aggregator",
+			"item": [
+				{
+					"name": "/customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
