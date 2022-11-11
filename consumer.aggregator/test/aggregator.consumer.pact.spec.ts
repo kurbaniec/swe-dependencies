@@ -5,9 +5,8 @@ import {CustomerProviderApi} from "../src/aggregator/customer.provider.api";
 import {atLeastLike, number, string} from "@pact-foundation/pact/src/v3/matchers";
 import {expect} from "chai";
 import {AggregatedCustomer} from "../src/aggregator/customer";
-import {CustomerQuery} from "../src/aggregator/custome.query";
 
-const {eachLike, like} = MatchersV3
+const {eachLike} = MatchersV3
 
 const provider = new PactV3({
     consumer: "AggregatorService",
@@ -75,6 +74,5 @@ describe("API Pact test", () => {
         })
     })
 })
-
 
 
